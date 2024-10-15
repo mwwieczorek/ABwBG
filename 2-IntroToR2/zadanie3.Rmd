@@ -1,0 +1,40 @@
+---
+title: "Zadanie 3"
+author: "martyna"
+date: "2024-10-15"
+output: html_document
+---
+
+# **AntibodyTiters**
+
+## Wprowadzenie i opis środowiska
+
+W zadaniu 3 wybrałam pakiet **AntibodyTiters**. Jest on wykorzystywany praktycznie w badaniach nad efektami szczepień. Aby go wczytać należy użyc komendy:
+
+```{r}
+library(AntibodyTiters)
+```
+
+## Przykładowa komenda 1
+
+```{r}
+ emptyABT(fileName = "empty.xlsx", pmax = 7, returnDF = FALSE, 
+ 	Attrib = c("Sex", "Age", "VeryLow"), 
+ 	attribFactors = list(c("F", "M"), c(18, 80), c(TRUE, FALSE)))
+ 
+```
+
+Powyższa komenda pozwala na utworzneie pustego arkusza w excelu gdzie można wprowadzać dane doświadczalne.
+
+## Przykładowa komenda 2
+
+```{r}
+inDataVL <- subset(inData, VeryLow == TRUE)
+halfLifeABT(inDataVL, output = "data.frame")
+```
+
+Powyższa funkcja pozwala na obliczanie okresu półtrwania na podstawie obiektu klasy ABT.
+
+## Podsumowanie
+
+Pakiet ten posiada wiele fumkcji pozwalajacych na analize danych w badaniach nad efektami szczepień, pozwala na analizę danych zarówno od jednego jak i wielu pacjentów oraz określenie miana przeciwciał podczas podawania różnych dawek immunizacyjnych.
