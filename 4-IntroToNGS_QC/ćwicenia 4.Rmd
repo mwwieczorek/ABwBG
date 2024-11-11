@@ -1,0 +1,72 @@
+---
+title: "cw 4"
+output: html_document
+date: "2024-11-06"
+---
+
+# Ćwiczenia 4
+
+### Instalacja BiocManager
+
+```{r}
+if (!requireNamespace("BiocManager", quietly = TRUE)) 
+    install.packages("BiocManager")
+```
+
+### Instalacja pakietów "GenomicFeatures", "AnnotationDbi", "ShortRead", "Biostrings"
+
+```{r}
+BiocManager::install("GenomicFeatures")
+BiocManager::install("AnnotationDbi")
+BiocManager::install("ShortRead")
+BiocManager::install("Biostrings")
+```
+
+### Zastsowanie wyżej wymienionych pakietów
+
+**Biostrings:** Operacje na sekwencjach DNA, RNA i białek.
+
+**ShortRead:** Praca z danymi z sekwencjonowania nowej generacji (NGS).
+
+**GenomicFeatures:** Tworzenie i używanie obiektów TxDb zawierających informacje o cechach genomowych.
+
+**AnnotationDbi:** Interfejs do baz danych z annotacjami biologicznymi.
+
+## Przykładowe zastosowania:
+
+### Praca z sekwencjami
+
+Sekwencja wybrana do ćwiczeń:
+
+**Geneome sequence of Escherichia coli (SRR10346111)**
+
+#### 1.Wczytanie sekwencji z pliku FASTA i wyświetlenie pierwszych kilku sekwencji
+
+```{r}
+
+dna_seqs <- readDNAStringSet("C:/Users/Sensumart/Desktop/Nowy folder/SRR31238041.fasta.gz")
+
+dna_seqs[1:5]
+```
+
+![](images/clipboard-789401370.png)
+
+#### 2. Odwrócenie i komplementarność sekwencji
+
+```{r}
+rev_comp_seqs <- reverseComplement(dna_seqs)
+rev_comp_seqs[1:5]
+
+```
+
+![](images/clipboard-1693879603.png)
+
+#### 3.Obliczanie zawartości GC
+
+```{r}
+gc_content <- letterFrequency(dna_seqs, letters = c("G", "C"), as.prob = TRUE)
+gc_content
+
+```
+
+![](images/clipboard-3040936661.png)
