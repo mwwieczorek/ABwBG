@@ -1,3 +1,4 @@
+Martyna Wieczorek, 203097, Bioinżynieria Zwierząt 
 # Wizualizacja danych - instalacja i wykorzystanie pakietów w celu analizy możliwości graficznych danych z zakresu genomiki 
 ### Wykorzystywane pakiety 
 - ggplot2
