@@ -2,7 +2,7 @@
 Variant Annotation odnosi się do procesu przypisywania biologicznych, funkcjonalnych i klinicznych informacji do wariantów genetycznych, takich jak SNP (Single Nucleotide Polymorphisms) czy insercje/delecje (InDels). Celem tego procesu jest lepsze zrozumienie znaczenia i potencjalnego wpływu wariantów na genom, geny, i fenotyp.
 
 
-## Cel ćwiczenia: Anottacja wariantów na chromosomie 22
+## Cel ćwiczenia: Annotacja wariantów na chromosomie 22 - zapoznanie sie z pakietami do annotacji wariontów oraz zapoznanie się z pracą z danymi typu VCF
 
 ## Wykorzystane pakiety 
 
@@ -28,15 +28,19 @@ Variant Annotation odnosi się do procesu przypisywania biologicznych, funkcjona
 
 
 ### Filtrowanie wariantów:
+
 - Warianty, które mają wartość jakości większą niż 99 i nie mają wartości NA (brak jakości), są zachowywane w obiekcie `vcf_filtered`
 - Następnie dokonano analizy jakości przefiltrowanych wariantów.
 
 ### Instalowanie i ładowanie pakietu do adnotacji: "TxDb.Hsapiens.UCSC.hg19.knownGene"
+
 - Ten pakiet zawiera dane dotyczące genomu ludzkiego (hg19) i pozwala na adnotację wariantów z pliku VCF względem znanych genów.
 
 ### Adnotacja wariantów:
  **Funkcja `rowRanges(vcf_filtered)`** zwraca zakresy chromosomowe z wariantów w przefiltrowanym pliku VCF (`gr`) 
+ 
  **Funkcja`locateVariants`** znajduje, gdzie te warianty pasują do elementów w bazie danych genów (`txdb`). 
+ 
  - Adnotacja ta jest przechowywana w zmiennej `loc_anno`.
 
 ### PROBLEM 
@@ -52,6 +56,7 @@ seqlevelsStyle(gr)
 seqlevelsStyle(txdb)
 ```
 - **Sprawdzanie stylów sekwencji**:
+  
 **Funkcja `seqlevelsStyle()`** sprawdza styl nazw sekwencji w obiektach `gr` i `txdb`. Styl ten odnosi się do sposobu, w jaki nazywane są chromosomy (np. "chr1" vs "1").
 
 ### Dopasowanie poziomów sekwencji:
@@ -63,6 +68,7 @@ setdiff(seqlevels(gr), seqlevels(txdb))
 ```
 - **Dopasowanie poziomów sekwencji**:
 **Funkcja `setdiff(seqlevels(gr), seqlevels(txdb))`** sprawdza, które poziomy sekwencji (chromosomy) występują w `gr`, ale nie w `txdb`.
+  
 - ponieważ różnice istnieją, dostosowano poziomy sekwencji za pomocą `seqlevels(gr) <- paste0("chr", seqlevels(gr))`, aby dopasować je do formatu używanego przez `txdb`.
 - Zmieniono nazwy chromosomów w obiekcie `gr`, dodając prefiks "chr", aby pasowały do nazw w pliku VCF. Użyto do tego funkcji:
 
