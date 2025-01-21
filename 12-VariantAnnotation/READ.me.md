@@ -1,16 +1,23 @@
+# Variant Annotation - Annotacja Wariantów
+Variant Annotation odnosi się do procesu przypisywania biologicznych, funkcjonalnych i klinicznych informacji do wariantów genetycznych, takich jak SNP (Single Nucleotide Polymorphisms) czy insercje/delecje (InDels). Celem tego procesu jest lepsze zrozumienie znaczenia i potencjalnego wpływu wariantów na genom, geny, i fenotyp.
 
 
-### Instalowanie i ładowanie pakietów:
+## Cel ćwiczenia: Anottacja wariantów na chromosomie 22
+
+## Wykorzystane pakiety 
+
 **VariantAnnotation** - do analizy plików VCF
 
 **GenomicRanges** - do pracy z zakresami genetycznymi
 
 **AnnotationHub** - do uzyskiwania danych adnotacyjnych
 
+**TxDb.Hsapiens.UCSC.hg19.knownGene** - pakiet annotacyjny, wzbogaca warianty o informacje genowe
 
 ### plik wykorzystany na zajęciach --> chr22.vcf.gz, zawiera dane o wariantach genetycznych z chromosomu 22
 - plik został przypisany do wartości vcf
-
+  
+## Poszczególne kroki postępowanioa 
 
 ### Analiza jakości:
 - Funkcja `qual(vcf)` zwraca jakość wariantów w pliku VCF, 
@@ -130,5 +137,6 @@ head(loc_anno)
 ## **Wynik pokazuje zawartość obiektu `GRanges` z 6 zakresami i 9 kolumnami metadanych**
 
 - Obiekt zawiera warianty znajdujące się na chromosomie `chr22`, głównie w regionach kodujących (`coding`), z jednym wariantem (`rs188399257`) znajdującym się w miejscu splicingowym (`spliceSite`).
+
 
 
