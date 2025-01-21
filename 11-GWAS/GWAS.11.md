@@ -251,5 +251,6 @@ head(GWAS_1)
 ```
 
 ### 8.Stworzenie wykresu Manhattan
-
-\`\`\`{r} manhattan(x = GWAS_1, chr = "chrom", bp = "pos", p = "y", snp = "marker", col = c("blue4", "orange3"), suggestiveline = -log10(1e-04), logp = TRUE)
+```{r}
+manhattan(x = GWAS_1, chr = "chrom", bp = "pos", p = "y", snp = "marker", col = c("blue4", "orange3"), suggestiveline = -log10(1e-04), logp = TRUE)
+```
