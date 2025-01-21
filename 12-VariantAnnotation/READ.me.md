@@ -15,6 +15,8 @@
 ### Analiza jakości:
 - Funkcja `qual(vcf)` zwraca jakość wariantów w pliku VCF, 
 - uzyskane statystyki dotyczące jakości wariantów:
+
+  
   ![image](https://github.com/user-attachments/assets/bc26cb41-391e-401b-aad7-0a21d52a2caa)
 
 
