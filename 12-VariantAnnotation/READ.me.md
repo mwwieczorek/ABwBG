@@ -98,52 +98,6 @@ setdiff(seqlevels(gr), seqlevels(txdb))
    ```r
    gr <- trim(gr)
    ```
-
-### Sprawdzanie i dopasowywanie stylów sekwencji:
-```r
-seqlevelsStyle(gr)
-seqlevelsStyle(txdb)
-```
-- **Sprawdzanie stylów sekwencji**:
-**Funkcja `seqlevelsStyle()`** sprawdza styl nazw sekwencji w obiektach `gr` i `txdb`. Styl ten odnosi się do sposobu, w jaki nazywane są chromosomy (np. "chr1" vs "1").
-
-### Dopasowanie poziomów sekwencji:
-```r
-setdiff(seqlevels(gr), seqlevels(txdb))
-seqlevels(gr)
-seqlevels(gr) <- paste0("chr", seqlevels(gr))
-setdiff(seqlevels(gr), seqlevels(txdb))
-```
-- **Dopasowanie poziomów sekwencji**:
-**Funkcja `setdiff(seqlevels(gr), seqlevels(txdb))`** sprawdza, które poziomy sekwencji (chromosomy) występują w `gr`, ale nie w `txdb`.
-- ponieważ różnice istnieją, dostosowano poziomy sekwencji za pomocą `seqlevels(gr) <- paste0("chr", seqlevels(gr))`, aby dopasować je do formatu używanego przez `txdb`.
-
-### Usuwanie niekompatybilnych poziomów sekwencji:
-```r
-gr <- keepSeqlevels(gr, seqlevels(txdb), pruning.mode = "coarse")
-loc_anno <- locateVariants(gr, txdb, AllVariants())
-head(loc_anno)
-```
-- **Usuwanie niekompatybilnych poziomów sekwencji**:
-**Funkcja `keepSeqlevels()`** usunęła wszystkie poziomy sekwencji z obiektu `gr`, które nie występują w `txdb`.
- -  `pruning.mode = "coarse"` wskazuje na zastosowanie bardziej ogólnej filtracji
-
-### Ponowne dopasowanie i usuwanie niekompatybilnych poziomów sekwencji:
-```r
-valid_seqlevels <- intersect(seqlevels(gr), seqlevels(txdb))
-gr <- keepSeqlevels(gr, valid_seqlevels, pruning.mode = "coarse")
-loc_anno <- locateVariants(gr, txdb, AllVariants())
-head(loc_anno)
-```
-- **Dopasowanie valid_seqlevels**:
-**Funkcja `intersect(seqlevels(gr), seqlevels(txdb))`** zwraca tylko te poziomy sekwencji, które są wspólne dla obu obiektów `gr` i `txdb`.
-- Następnie używamy tej listy do ponownego dostosowania poziomów sekwencji w `gr`.
-
-### Trymowanie obiektów GRanges:
-```r
-gr <- trim(gr)
-```
-- **Trymowanie obiektów GRanges**:
 **Funkcja `trim()`** usuwa zakresy, które wychodzą poza granice dostępnych sekwencji w obiekcie `gr`.
 
 ### Dodawanie długości sekwencji:
