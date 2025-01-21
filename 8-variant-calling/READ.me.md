@@ -45,6 +45,11 @@ Podczas ćwiczeń wykorzystano następujące **pakiety** w celu przeprowadzenia 
 - konwersja danych do ramki danych za pomoca pakiety **dplyr** 
 
 
+**alt count** - ile razy dany odczyt alternatywny musi wystąpić aby był uzanany za prawidłowy np. 5 razy
+
+**filter(total \>= 10** : ten argument oznacza liczbe odczytów - szukamy pozycji gdzie jest conajmniej 10 odczytów (minimalne pokrycie) - na podstawie podsumowania min/ kwartyl
+
+**alt_count / total \>= 0.2** : proporcja odczytów alternatywnych dla genomu ref do wszystkich odczytów
 
  **Czynniki. które mogą wpływać na dokładność wykrywania wariantów**
 
